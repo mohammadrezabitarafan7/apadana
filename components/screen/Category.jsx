@@ -1,7 +1,13 @@
+"use client";
+import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
+import fetcher from "@/lib/swrFetcher";
 
-const Category = () => {
+const Category = ({ fallback }) => {
+  const data = fallback;
+  // console.log("FALLLLBACK", data);
+
   const items = [
     {
       title: "سالنامه ۱۴۰۴",
@@ -52,7 +58,9 @@ const Category = () => {
           />
 
           <div className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-center py-3 max-md:py-1">
-            <h3 className="text-sm font-semibold max-md:text-xs">{item.title}</h3>
+            <h3 className="text-sm font-semibold max-md:text-xs">
+              {item.title}
+            </h3>
           </div>
         </Link>
       ))}
