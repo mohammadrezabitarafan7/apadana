@@ -1,12 +1,8 @@
-"use client";
-import useSWR from "swr";
 import Image from "next/image";
 import Link from "next/link";
-import fetcher from "@/lib/swrFetcher";
 
 const Category = ({ fallback }) => {
-  const data = fallback;
-  // console.log("FALLLLBACK", data);
+  const data = fallback?.result;
 
   const items = [
     {
@@ -14,11 +10,7 @@ const Category = ({ fallback }) => {
       image: "/img1.png",
       href: "/products/salnameh-1404",
     },
-    {
-      title: "دفتر برنامه ریزی",
-      image: "/note1.png",
-      href: "/products/desk-calendar",
-    },
+
     {
       title: "دفاتر فانتزی",
       image: "/note2.jpeg",
@@ -34,23 +26,20 @@ const Category = ({ fallback }) => {
       image: "/calender.jpg",
       href: "/products/desk-calendar",
     },
-    {
-      title: "هدایای تبلیغاتی",
-      image: "/note4.jpeg",
-      href: "/products/fantasy-notebooks",
-    },
+
   ];
 
   return (
     <div className="grid grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 gap-6 max-md:px-3">
-      {items.map((item, index) => (
+      {data?.map((item, index) => (
         <Link
-          href={item.href}
+           href={`/products/${item.slug}`}
+
           key={index}
           className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
         >
           <Image
-            src={item.image}
+            src={item.photo}
             alt={item.title}
             width={400}
             height={300}

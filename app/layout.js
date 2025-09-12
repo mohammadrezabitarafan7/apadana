@@ -32,9 +32,7 @@ export default function RootLayout({ children }) {
           <Navbar />
         </div>
 
-        {/* ✅ حالا SWRProvider یک Client Component هست */}
         <SWRProvider>{children}</SWRProvider>
-
         <BottomNav1 />
         <Footer />
       </body>

@@ -5,11 +5,10 @@ const Navbar = () => {
 
   const menu = [
     { title: "خانه", href: "/" },
-    { title: "سالنامه ۱۴۰۴", href: "/products/salnameh-1404" },
-    { title: "تقویم رومیزی", href: "/products/desk-calendar" },
-    { title: "دفاتر فانتزی", href: "/products/fantasy-notebooks" },
-    { title: "دفتر برنامه ریزی ", href: "/products/planners" },
-    { title: "لوح تقدیر", href: "/products/certificates" },
+    { title: "سالنامه ۱۴۰۴", href: "/products/سالنامه-۱۴۰۴" },
+    { title: "تقویم رومیزی", href: "/products/تقویم-رومیزی" },
+    { title: "دفاتر فانتزی", href: "/products/دفاتر-فانتزی" },
+    { title: "ست مدیرتی", href: "/products/دفتر-برنامه-ریزی" },
     { title: "لیست قیمت", href: "/price-list" },
     { title: "مقالات", href: "/articles" },
     { title: "ارتباط با ما", href: "/contact" },
