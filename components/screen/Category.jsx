@@ -4,30 +4,7 @@ import Link from "next/link";
 const Category = ({ fallback }) => {
   const data = fallback?.result;
 
-  const items = [
-    {
-      title: "سالنامه ۱۴۰۴",
-      image: "/img1.png",
-      href: "/products/salnameh-1404",
-    },
 
-    {
-      title: "دفاتر فانتزی",
-      image: "/note2.jpeg",
-      href: "/products/fantasy-notebooks",
-    },
-    {
-      title: "انواع سالنامه",
-      image: "/note5.jpeg",
-      href: "/products/salnameh-1404",
-    },
-    {
-      title: "تقویم رومیزی",
-      image: "/calender.jpg",
-      href: "/products/desk-calendar",
-    },
-
-  ];
 
   return (
     <div className="grid grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 gap-6 max-md:px-3">

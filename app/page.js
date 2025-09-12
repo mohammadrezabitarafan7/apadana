@@ -1,4 +1,3 @@
-// app/page.jsx
 import api from "@/lib/axios";
 import Category from "@/components/screen/Category";
 import MySwiper from "@/components/screen/Swiper";
@@ -13,12 +12,18 @@ export const revalidate = 15552000;
 
 export default async function Home() {
   let categories = [];
+  let blogs = [];
 
   try {
-    const res = await api.get("/categories"); 
-    categories = res.data;
+    const [resCategories, resBlogs] = await Promise.all([
+      api.get("/categories"),
+      api.get("/articles"),
+    ]);
+
+    categories = resCategories.data;
+    blogs = resBlogs.data;
   } catch (err) {
-   
+    console.error(err);
   }
 
   return (
@@ -28,9 +33,10 @@ export default async function Home() {
       <Category fallback={categories} />
       <ApadanaSection />
       <Banner />
-      <BlogSection />
+      <BlogSection fallback={blogs} />
       <CardContacts />
       <MapSection />
     </main>
   );
 }
+
