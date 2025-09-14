@@ -7,9 +7,37 @@ import { Pagination } from "swiper/modules";
 import Image from "next/image";
 import useSWR from "swr";
 import api from "@/lib/axios";
+import styled from "styled-components";
 
 const fetcher = (url) => api.get(url).then((res) => res.data);
 const skeletonItems = [1, 2, 3, 4];
+
+const StyledSwiper = styled(Swiper)`
+  .swiper-pagination {
+    position: relative;
+    top: 0px;
+    margin-top: 32px;
+  }
+
+  .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    opacity: 1;
+    transition: all 0.3s ease;
+  }
+
+  .swiper-pagination-bullet-active {
+    width: 8px;
+    height: 8px;
+    background: #fdd93b;
+  }
+
+  .swiper-pagination-bullet:hover {
+    background-color: #fdd93b;
+  }
+`;
 
 export default function MySwiper() {
 
@@ -42,8 +70,8 @@ export default function MySwiper() {
     );
 
   return (
-    <div className="w-full py-16 max-md:py-0">
-      <Swiper
+    <div className="w-full">
+      <StyledSwiper
         loop={true}
         centeredSlides={true}
         breakpoints={{
@@ -71,7 +99,7 @@ export default function MySwiper() {
             </div>
           </SwiperSlide>
         ))}
-      </Swiper>
+      </StyledSwiper>
 
       <style jsx>{`
         .swiper-pagination-bullet {
@@ -84,6 +112,7 @@ export default function MySwiper() {
           background: #fdd400;
         }
       `}</style>
+      
     </div>
   );
 }

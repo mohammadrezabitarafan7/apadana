@@ -1,26 +1,24 @@
-import InstagramIcon from "../svg/InstagramIcon";
-import PhoneIcon from "../svg/PhoneIcon";
-import WhatsAppIcon from "../svg/WhatsAppIcon";
+import Image from "next/image";
 
 const CardContacts = () => {
   const items = [
     {
-      icon: <WhatsAppIcon />,
+      icon: "/WhatsAppIcon.png",
       title: "ارسال پیام",
       desc: "از طریق واتس‌اپ با ما در ارتباط باشید",
-      aria: "پیام واتس‌اپ"
+      aria: "پیام واتس‌اپ",
     },
     {
-      icon: <PhoneIcon />,
+      icon: "/TelegramIcon.png",
       title: "تماس تلفنی",
       desc: "شماره پشتیبانی 24 ساعته",
-      aria: "تماس تلفنی"
+      aria: "تماس تلفنی",
     },
     {
-      icon: <InstagramIcon />,
+      icon: "/InstagramIcon.png",
       title: "شبکه‌های اجتماعی",
       desc: "ما را در شبکه‌های اجتماعی دنبال کنید",
-      aria: "اینستاگرام"
+      aria: "اینستاگرام",
     },
   ];
 
@@ -29,13 +27,19 @@ const CardContacts = () => {
       {items.map((i, index) => (
         <article
           key={index}
-          className="flex flex-col items-center justify-center gap-3 p-6 bg-white rounded-2xl shadow"
+          className="flex flex-col items-center justify-center gap-3 p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
         >
           <div
             className="w-12 h-12 flex items-center justify-center"
             aria-label={i.aria}
           >
-            {i.icon}
+            <Image
+              src={i.icon}
+              alt={i.aria}
+              width={48}
+              height={48}
+              className="object-contain"
+            />
           </div>
           <h3 className="text-lg font-bold text-black">{i.title}</h3>
           <p className="text-sm text-gray-600 text-center">{i.desc}</p>

@@ -7,36 +7,41 @@ import BlogSection from "@/components/screen/BlogSection";
 import CardContacts from "@/components/screen/CardContacts";
 import MapSection from "@/components/screen/MapSection";
 import StoryList from "@/components/screen/StoryList";
+import AllProducts from "@/components/screen/Allproducts";
 
 export const revalidate = 15552000;
 
 export default async function Home() {
   let categories = [];
   let blogs = [];
+  let products = [];
 
   try {
-    const [resCategories, resBlogs] = await Promise.all([
+    const [resCategories, resBlogs, resProducts] = await Promise.all([
       api.get("/categories"),
       api.get("/articles"),
+      api.get("/products/all"),
     ]);
 
     categories = resCategories.data;
     blogs = resBlogs.data;
+    products = resProducts.data;
   } catch (err) {
     console.error(err);
   }
 
   return (
-    <main className="flex flex-col gap-[32px] m-auto p-12 container items-center max-md:px-0">
+    <main className="flex flex-col gap-[32px] m-auto  container items-center max-md:px-0">
       <MySwiper />
       <StoryList />
       <Category fallback={categories} />
-      <ApadanaSection />
+      <AllProducts fallback={products} />
       <Banner />
+      <ApadanaSection />
+
       <BlogSection fallback={blogs} />
       <CardContacts />
       <MapSection />
     </main>
   );
 }
-

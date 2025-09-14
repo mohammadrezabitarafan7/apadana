@@ -5,11 +5,10 @@ import Link from "next/link";
 const BlogSection = ({ fallback }) => {
   if (!fallback || fallback.length === 0) return null;
 
-  // فقط ۳ تا اول
   const blogs = fallback?.result.slice(0, 3);
 
   return (
-    <div className="flex relative flex-col gap-12 container p-12 max-md:py-12 max-md:px-4">
+    <div className="flex relative flex-col gap-12 container py-12 max-md:py-12 max-md:px-4">
       {/* Header */}
       <div className="flex flex-row items-center justify-between">
         <h1 className="text-2xl text-[#1E1E1E] font-bold max-md:text-sm">

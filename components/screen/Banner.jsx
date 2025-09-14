@@ -3,7 +3,7 @@ import Image from "next/image";
 const Banner = () => {
   return (
     <div className="grid gap-5 grid-cols-12 w-full max-md:flex max-md:flex-col max-md:px-4">
-      <div className="col-span-6 relative w-full h-[210px] rounded-3xl overflow-hidden">
+      <div className="col-span-6 relative w-full h-[310px] rounded-3xl overflow-hidden hover:scale-105 duration-500">
         <Image
           src="/back3.png"
           alt="سالنامه آپادانا"
@@ -18,7 +18,7 @@ const Banner = () => {
         </div>
       </div>
 
-      <div className="col-span-6 relative w-full h-[210px] rounded-3xl overflow-hidden">
+      <div className="col-span-6 relative w-full h-[310px] rounded-3xl overflow-hidden hover:scale-105 duration-500">
         <Image
           src="/29.png"
           alt="سالنامه آپادانا"
