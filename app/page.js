@@ -9,7 +9,7 @@ import MapSection from "@/components/screen/MapSection";
 import StoryList from "@/components/screen/StoryList";
 import AllProducts from "@/components/screen/Allproducts";
 
-export const revalidate = 15552000;
+export const revalidate = 3600; 
 
 export default async function Home() {
   let categories = [];
@@ -18,27 +18,27 @@ export default async function Home() {
 
   try {
     const [resCategories, resBlogs, resProducts] = await Promise.all([
-      api.get("/categories"),
-      api.get("/articles"),
-      api.get("/products/all"),
+      api.get("/categories").catch(() => ({ data: [] })),
+      api.get("/articles").catch(() => ({ data: [] })),
+      api.get("/products/all").catch(() => ({ data: [] })),
     ]);
+  console.log("PR",products)
 
-    categories = resCategories.data;
-    blogs = resBlogs.data;
-    products = resProducts.data;
+    categories = resCategories.data ?? [];
+    blogs = resBlogs.data ?? [];
+    products = resProducts.data ?? [];
   } catch (err) {
-    console.error(err);
+    console.error("Error fetching data:", err.message);
   }
 
   return (
-    <main className="flex flex-col gap-[32px] m-auto  container items-center max-md:px-0">
+    <main className="flex flex-col gap-[32px] m-auto container items-center max-md:px-0">
       <MySwiper />
       <StoryList />
       <Category fallback={categories} />
       <AllProducts fallback={products} />
       <Banner />
       <ApadanaSection />
-
       <BlogSection fallback={blogs} />
       <CardContacts />
       <MapSection />
