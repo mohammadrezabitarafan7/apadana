@@ -22,13 +22,12 @@ export default async function Home() {
       api.get("/articles").catch(() => ({ data: [] })),
       api.get("/products/all").catch(() => ({ data: [] })),
     ]);
-  console.log("PR",products)
 
     categories = resCategories.data ?? [];
     blogs = resBlogs.data ?? [];
     products = resProducts.data ?? [];
   } catch (err) {
-    console.error("Error fetching data:", err.message);
+    // console.error("Error fetching data:", err.message);
   }
 
   return (

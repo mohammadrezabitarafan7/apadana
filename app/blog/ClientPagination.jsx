@@ -55,17 +55,17 @@ export default function ClientPagination({ allBlogs, perPage, initialStart }) {
             <Image
               width={400}
               height={200}
-              src={blog.photo || "/img1.png"}
-              alt={blog.title}
+              src={blog?.photo || "/img1.png"}
+              alt={blog?.title}
               className="w-full h-[200px] object-cover rounded-lg"
             />
             <h2 className="text-base font-bold text-gray-900 mt-3">{blog.title}</h2>
             <hr className="my-2" />
             <p className="text-xs leading-loose text-gray-600 line-clamp-3 text-justify">
-              {blog.short_text}
+              {blog?.short_text}
             </p>
             <time className="text-xs text-gray-500 mt-1">
-              {blog.jalaliDate}
+              {blog?.jalaliDate}
             </time>
           </Link>
         ))}

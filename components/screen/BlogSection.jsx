@@ -11,14 +11,14 @@ const BlogSection = ({ fallback }) => {
     <div className="flex relative flex-col gap-12 container py-12 max-md:py-12 max-md:px-4">
       {/* Header */}
       <div className="flex flex-row items-center justify-between">
-        <h1 className="text-2xl text-[#1E1E1E] font-bold max-md:text-sm">
+        <h1 className="text-2xl text-[#17182f] font-bold max-md:text-sm">
           مقالات منتشر شده
         </h1>
         <Link
           className="flex items-center gap-3 border border-[#4C4C4C] p-2 rounded-xl"
           href="/blog"
         >
-          <span className="text-base text-[#4C4C4C] max-md:text-xs">
+          <span className="text-sm text-[#17182f] max-md:text-xs">
             مشاهده همه
           </span>
           <ArrowIcon size={8} />
@@ -42,7 +42,7 @@ const BlogSection = ({ fallback }) => {
       />
 
       {/* Content */}
-      <div className="grid grid-cols-12 gap-6 max-h-[483px] max-md:flex-col max-md:flex">
+      <div className="grid grid-cols-12 gap-6 max-md:flex-col max-md:flex">
         {/* مقاله اول بزرگ */}
         {blogs[0] && (
           <article className="col-span-6 flex flex-col gap-5 bg-white shadow-2xl rounded-[20px] p-6 hover:scale-105 duration-300 cursor-pointer">
@@ -51,7 +51,7 @@ const BlogSection = ({ fallback }) => {
               width={600}
               height={250}
               className="w-full h-[250px] object-cover rounded-xl"
-              alt={blogs[0].title}
+              alt={blogs[0].title || "سالنامه آپادانا"}
               src={blogs[0].photo || "/img1.png"}
             />
             <div className="grid grid-cols-12 items-start">
@@ -86,8 +86,8 @@ const BlogSection = ({ fallback }) => {
                   width={182}
                   height={182}
                   className="w-full h-full rounded-2xl object-cover"
-                  alt={blog.title}
-                  src={blog.photo || "/img1.png"}
+                  alt={blog?.title || "apadana"}
+                  src={blog?.photo || "/img1.png"}
                 />
               </div>
               <div className="col-span-7 flex flex-col justify-between gap-3 px-4">

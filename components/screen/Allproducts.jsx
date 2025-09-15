@@ -43,18 +43,32 @@ const breakpoints = {
 
 const AllProducts = ({ fallback }) => {
   const data = fallback?.result;
-  console.log(data)
+  console.log(data);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   return (
-    <div className="flex flex-col gap-5 py-20 max-md:px-5 w-full">
+    <div className="flex relative flex-col gap-5 py-20 max-md:px-5 w-full">
       {/* Header */}
       <div className="flex flex-row items-center justify-between py-6 max-md:py-2">
-        <span className="text-black font-black text-lg underline max-md:text-sm">
+        <span className="text-[#17182f] font-black text-lg  max-md:text-sm">
           پرفروش ترین محصولات
         </span>
+        <Image
+          className="absolute bottom-0 right-12 -z-40"
+          width={180}
+          height={50}
+          alt="سالنامه آپادانا"
+          src="/back1.png"
+        />
+        <Image
+          className="absolute left-12 -z-40"
+          width={180}
+          height={50}
+          alt="سالنامه آپادانا"
+          src="/back1.png"
+        />
         <div className="flex gap-2 items-center border border-gray-600 rounded-md p-2 max-md:p-1 cursor-pointer">
-          <span className="text-black text-sm max-md:text-xs hover:text-gray-400">
+          <span className="text-[#17182f] text-sm max-md:text-xs hover:text-[#fdd400]">
             مشاهده همه
           </span>
           <ArrowIcon size={8} />
@@ -79,8 +93,8 @@ const AllProducts = ({ fallback }) => {
                   <Image
                     width={250}
                     height={250}
-                    alt={i.title || ""}
-                    src={i.photo}
+                    alt={i?.title || "apadana"}
+                    src={i?.photo}
                     quality={100}
                     className="m-auto w-full h-full object-contain"
                   />

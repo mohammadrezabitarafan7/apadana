@@ -4,20 +4,17 @@ import Link from "next/link";
 const Category = ({ fallback }) => {
   const data = fallback?.result;
 
-
-
   return (
-    <div className="grid grid-cols-1 max-md:grid-cols-2 md:grid-cols-3 gap-6 max-md:px-3">
+    <div className="grid grid-cols-1 max-md:grid-cols-2 md:grid-cols-4 gap-6 max-md:px-3">
       {data?.map((item, index) => (
         <Link
-           href={`/products/${item.slug}`}
-
+          href={`/${item.slug}`}
           key={index}
           className="group relative rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-shadow"
         >
           <Image
             src={item.photo}
-            alt={item.title}
+            alt={item.title || "apadana"}
             width={400}
             height={300}
             className="w-full h-[220px] max-md:h-[150px] object-cover group-hover:scale-105 transition-transform duration-300"

@@ -39,8 +39,8 @@ export default async function BlogPage({ params }) {
       {blog.photo && (
         <div className="w-1/2 m-auto h-[350px] relative rounded-xl overflow-hidden shadow-md">
           <Image
-            src={blog.photo}
-            alt={blog.title}
+            src={blog?.photo}
+            alt={blog?.title}
             fill
             className="object-cover"
           />

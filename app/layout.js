@@ -5,6 +5,7 @@ import Footer from "@/components/screen/Footer";
 import Navbar from "@/components/screen/Navbar";
 import BottomNav1 from "@/components/ui/BottomNav";
 import SWRProvider from "@/components/SWRProvider";
+import Image from "next/image";
 
 
 const geistSans = Geist({
@@ -28,8 +29,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <div className=" top-0 z-50 w-full px-16">
+        <div className=" top-0 z-50 w-full container m-auto ">
           <Navbar />
+          <div className="bg-[#f9f9f9] border-b border-[#fdd400] mb-5 justify-center md:hidden ">
+            <Image className="m-auto" src='/logo1.png' width={75} height={100} alt="apadana-logo"/>
+          </div>
         </div>
 
         <SWRProvider>{children}</SWRProvider>

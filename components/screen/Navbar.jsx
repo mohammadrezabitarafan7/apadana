@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 
 const Navbar = () => {
-
   const menu = [
     { title: "خانه", href: "/" },
     { title: "سالنامه ۱۴۰۴", href: "/products/سالنامه-۱۴۰۴" },
@@ -14,32 +13,48 @@ const Navbar = () => {
     { title: "ارتباط با ما", href: "/contact" },
   ];
 
+  const leftMenu = menu.slice(0, 4);
+  const rightMenu = menu.slice(4);
+
   return (
-    <div className="p-6 max-md:hidden">
+    <div className="py-6 max-md:hidden">
       <nav
-        className="w-full bg-white/35 backdrop-blur-xl rounded-lg shadow-md px-4 py-3"
+        className="w-full backdrop-blur-xl rounded-lg shadow-md bg-white"
         aria-label="منوی اصلی سالنامه آپادانا"
       >
-        <div className="container mx-auto justify-center flex items-center max-md:justify-start">
-          {/* لوگو */}
-          <Link href="/" className="flex items-center">
-            <Image
-              src="/logo.png"
-              width={80}
-              height={80}
-              alt="لوگوی سالنامه آپادانا - تولید کننده سالنامه ۱۴۰۴ و تقویم رومیزی"
-              priority
-              className=" px-3"
-            />
-          </Link>
-
-          {/* منو دسکتاپ */}
-          <ul className="hidden md:flex flex-row gap-6 text-gray-800 font-medium">
-            {menu.map((item, index) => (
+        <div className="container mx-auto flex justify-evenly items-center">
+          {/* منوی چپ */}
+          <ul className="flex gap-6 text-gray-800 font-medium">
+            {leftMenu.map((item, index) => (
               <li key={index}>
                 <Link
                   href={item.href}
-                  className="text-[#17182f] hover:underline transition-colors"
+                  className="text-[#1a2049] font-semibold hover:text-[#fdd400] transition-colors"
+                >
+                  {item.title}
+                </Link>
+              </li>
+            ))}
+          </ul>
+
+          {/* لوگو وسط */}
+          <Link href="/" className="flex-shrink-0">
+            <Image
+              src="/logo1.png"
+              width={100}
+              height={80}
+              alt="لوگوی سالنامه آپادانا - تولید کننده سالنامه ۱۴۰۴ و تقویم رومیزی"
+              priority
+            />
+          </Link>
+
+          {/* منوی راست */}
+          <ul className="flex gap-6 text-gray-800 font-medium">
+            {rightMenu.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href={item.href}
+                  className="text-[#1a2049] font-semibold hover:text-[#fdd400] transition-colors"
                 >
                   {item.title}
                 </Link>

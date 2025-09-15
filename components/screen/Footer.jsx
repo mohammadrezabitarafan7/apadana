@@ -3,6 +3,7 @@ import LocationIcon from "../svg/LocationIcon";
 import MailIcon from "../svg/MailIcon";
 import PhoneIcon from "../svg/PhoneIcon";
 import WhatsAppIcon from "../svg/WhatsAppIcon";
+import Image from "next/image";
 
 const Footer = () => {
   return (
@@ -10,7 +11,8 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
         {/* بخش ۱: درباره ما */}
         <div>
-          <h3 className="text-lg font-bold mb-4">سالنامه آپادانا</h3>
+          <Image src='/logo1.png' width={90} priority height={82} alt="apadana-logo"/>
+          <h3 className="text-lg font-bold mb-4 hidden">سالنامه آپادانا</h3>
           <p className="text-sm text-justify">
             سالنامه آپادانا با گرد هم‌آوری گروه‌های تخصصی در زمینه چاپ و صحافی و
             با بهره‌گیری از مدرن‌ترین ماشین‌آلات توانسته است محصولاتی مانند
