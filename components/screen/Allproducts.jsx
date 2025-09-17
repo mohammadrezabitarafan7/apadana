@@ -43,7 +43,6 @@ const breakpoints = {
 
 const AllProducts = ({ fallback }) => {
   const data = fallback?.result;
-  console.log(data);
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   return (

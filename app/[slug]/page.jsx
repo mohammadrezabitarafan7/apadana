@@ -10,7 +10,7 @@ export async function generateMetadata({ params }) {
   let category = null;
 
   try {
-    const url = `https://api.apadanacalendar.com/api/products?slug=${slug}`;
+    const url = `https://ctrl.apadanacalendar.com/api/products?slug=${slug}`;
     const res = await axios.get(url);
 
     if (res.data.success) {
@@ -22,10 +22,14 @@ export async function generateMetadata({ params }) {
 
   return {
     title: category?.title || "محصولات",
-    description: category?.short_text || `مشاهده محصولات دسته‌بندی ${category?.title || slug}`,
+    description:
+      category?.short_text ||
+      `مشاهده محصولات دسته‌بندی ${category?.title || slug}`,
     openGraph: {
       title: category?.title || "محصولات",
-      description: category?.short_text || `مشاهده محصولات دسته‌بندی ${category?.title || slug}`,
+      description:
+        category?.short_text ||
+        `مشاهده محصولات دسته‌بندی ${category?.title || slug}`,
       images: category?.photo ? [category.photo] : [],
     },
   };
@@ -38,7 +42,7 @@ const Page = async ({ params }) => {
   let products = [];
 
   try {
-    const url = `https://api.apadanacalendar.com/api/products?slug=${slug}`;
+    const url = `https://ctrl.apadanacalendar.com/api/products?slug=${slug}`;
     const res = await axios.get(url);
 
     if (res.data.success) {
@@ -51,12 +55,16 @@ const Page = async ({ params }) => {
 
   return (
     <div className="container mx-auto p-4">
-    
-
       {products.length === 0 ? (
         <div className="flex flex-col justify-center gap-3 py-12">
-        <p className="text-gray-500 text-center ">هیچ محصولی یافت نشد.</p>
-        <Link href='/' className="bg-blue-500 w-fit m-auto px-6 rounded-xl py-1.5"> خانه</Link>
+          <p className="text-gray-500 text-center ">هیچ محصولی یافت نشد.</p>
+          <Link
+            href="/"
+            className="bg-blue-500 w-fit m-auto px-6 rounded-xl py-1.5"
+          >
+            {" "}
+            خانه
+          </Link>
         </div>
       ) : (
         <ProductsModal products={products} />
