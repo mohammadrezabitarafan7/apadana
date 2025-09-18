@@ -70,7 +70,7 @@ export default function MySwiper() {
     );
 
   return (
-    <div className="w-full">
+    <div className="w-full max-md:pt-28">
       <StyledSwiper
         loop={true}
         centeredSlides={true}

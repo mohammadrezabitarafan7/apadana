@@ -4,13 +4,13 @@ import Link from "next/link";
 const Navbar = () => {
   const menu = [
     { title: "خانه", href: "/" },
-    { title: "سالنامه ۱۴۰۴", href: "/products/سالنامه-۱۴۰۴" },
-    { title: "تقویم رومیزی", href: "/products/تقویم-رومیزی" },
-    { title: "دفاتر فانتزی", href: "/products/دفاتر-فانتزی" },
-    { title: "ست مدیرتی", href: "/products/دفتر-برنامه-ریزی" },
-    { title: "لیست قیمت", href: "/price-list" },
-    { title: "مقالات", href: "/articles" },
-    { title: "ارتباط با ما", href: "/contact" },
+    { title: "محصولات", href: "/all-products" },
+    { title: "تقویم رومیزی", href: "/calendar" },
+    { title: "دفاتر تحصیلی", href: "/note-book" },
+    { title: "سالنامه رقعی", href: "/سالنامه%20رقعی" },
+    { title: "سالنامه اروپایی", href: "/سالنامه%20اروپایی" },
+    { title: "مقالات", href: "/blog" },
+    { title: "ارتباط با ما", href: "/contact-us" },
   ];
 
   const leftMenu = menu.slice(0, 4);

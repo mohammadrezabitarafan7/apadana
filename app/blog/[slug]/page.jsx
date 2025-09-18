@@ -1,27 +1,35 @@
 // app/blog/[slug]/page.jsx
 import Image from "next/image";
 import api from "@/lib/axios";
+import { getMeta } from "@/lib/meta";
 
 export const revalidate = 0;
 
 export async function generateMetadata({ params }) {
   const { slug } = params;
-  const res = await api.get(`/article?slug=${slug}`);
-  const blog = res?.data?.result?.[0];
-  
 
-  if (!blog) return { title: "مقاله یافت نشد" };
+  const meta = await getMeta(`blog/${slug}`);
+  if (!meta) {
+    return {
+      title: "مقالات",
+      description: "لیست مقالات سالنامه آپادانا",
+      robots: { index: false, follow: true }
+    };
+  }
 
   return {
-    title: blog.title,
-    description: blog.short_text || blog.title,
+    title: meta.title,
+    description: meta.description,
+    alternates: { canonical: `https://ctrl.apadanacalendar.com/blog/${slug}` },
     openGraph: {
-      title: blog.title,
-      description: blog.short_text || blog.title,
-      images: blog.photo ? [blog.photo] : [],
+      title: meta.og_title,
+      description: meta.og_description,
+      url: `https://ctrl.apadanacalendar.com/blog/${slug}`,
+      images: [meta.og_image],
+      locale: "fa_IR",
       type: "article",
     },
-    alternates: { canonical: `/blog/${slug}` },
+    robots: { index: meta.can_index, follow: true },
   };
 }
 
@@ -30,17 +38,29 @@ export default async function BlogPage({ params }) {
   const res = await api.get(`/article?slug=${slug}`);
   const blog = res?.data?.result?.[0];
 
-  if (!blog) return <p>مقاله یافت نشد</p>;
+  if (!blog) return <p className="text-center py-12">مقاله یافت نشد</p>;
 
-  const htmlText = blog.text || ""; 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": blog.title,
+    "image": blog.photo ? [blog.photo] : [],
+    "author": { "@type": "Person", "name": blog.author || "سالنامه آپادانا" },
+    "datePublished": blog.published_at,
+    "dateModified": blog.updated_at || blog.published_at,
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://ctrl.apadanacalendar.com/blog/${slug}`
+    }
+  };
 
   return (
     <article className="container mx-auto px-4 py-12 flex flex-col gap-8">
       {blog.photo && (
         <div className="w-1/2 m-auto h-[350px] relative rounded-xl overflow-hidden shadow-md">
           <Image
-            src={blog?.photo}
-            alt={blog?.title}
+            src={blog.photo}
+            alt={blog.title}
             fill
             className="object-cover"
           />
@@ -52,11 +72,12 @@ export default async function BlogPage({ params }) {
         <time className="text-sm text-gray-500">{blog.jalaliDate}</time>
       </header>
 
-      <div
-        className="prose prose-lg max-w-none text-gray-800"
-        dangerouslySetInnerHTML={{ __html: htmlText }}
+      <div className="text-black" dangerouslySetInnerHTML={{ __html: blog.text || '' }} />
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
-      <p className="text-gray-800">{blog.short_text}</p>
     </article>
   );
 }

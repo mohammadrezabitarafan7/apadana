@@ -41,7 +41,7 @@ export default function ClientPagination({ allBlogs, perPage, initialStart }) {
   );
 
   return (
-    <div className="container pt-32 m-auto pb-12 flex flex-col gap-8">
+    <div className="container pt-4 m-auto pb-12 flex flex-col gap-8">
       <h1 className="text-2xl font-bold mb-6 text-gray-700">مقالات منتشر شده</h1>
 
       {/* Grid مقالات */}

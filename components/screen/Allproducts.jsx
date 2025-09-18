@@ -7,6 +7,7 @@ import "swiper/css/effect-fade";
 import { Pagination } from "swiper/modules";
 import Image from "next/image";
 import ArrowIcon from "../svg/ArrowIcon";
+import Link from "next/link";
 
 const StyledSwiper = styled(Swiper)`
   .swiper-pagination {
@@ -50,7 +51,7 @@ const AllProducts = ({ fallback }) => {
       {/* Header */}
       <div className="flex flex-row items-center justify-between py-6 max-md:py-2">
         <span className="text-[#17182f] font-black text-lg  max-md:text-sm">
-          پرفروش ترین محصولات
+          محصولات آپادانا
         </span>
         <Image
           className="absolute bottom-0 right-12 -z-40"
@@ -67,9 +68,12 @@ const AllProducts = ({ fallback }) => {
           src="/back1.png"
         />
         <div className="flex gap-2 items-center border border-gray-600 rounded-md p-2 max-md:p-1 cursor-pointer">
-          <span className="text-[#17182f] text-sm max-md:text-xs hover:text-[#fdd400]">
+          <Link
+            href="/all-products"
+            className="text-[#17182f] text-sm max-md:text-xs"
+          >
             مشاهده همه
-          </span>
+          </Link>
           <ArrowIcon size={8} />
         </div>
       </div>

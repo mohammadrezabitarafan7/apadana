@@ -17,7 +17,7 @@ export default function Products({ products }) {
           <Image
             width={129}
             height={120}
-            src={item?.photo}
+            src={item?.photo || "/logo1.png"}
             alt={item?.title}
             className="w-full h-48 object-cover rounded mb-2"
             onClick={() => setSelectedImage(item?.photo)}
