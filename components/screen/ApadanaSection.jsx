@@ -42,13 +42,15 @@ const ApadanaSection = () => {
       </Head>
 
       <section className="grid relative grid-cols-12 w-full gap-6 my-12 max-md:flex max-md:flex-col max-md:px-4">
-        <div className="col-span-6 flex justify-center bg-gray-300 rounded-2xl">
+        <div className="col-span-6 flex justify-center rounded-2xl">
           <Image
-            className=" m-auto"
-            src="/img1.png"
+          
+            className=" m-auto rounded-2xl object-cover w-full h-full"
+            src="/note4.png"
             alt="سالنامه آپادانا"
-            width={500}
+            width={300}
             height={300}
+            quality={100}
           />
         </div>
 
@@ -89,7 +91,7 @@ const ApadanaSection = () => {
           </div>
 
           <Link
-            href="/products"
+            href="/all-products"
             className="mt-3 text-[#17182f] hover:underline"
           >
             مشاهده محصولات سالنامه آپادانا

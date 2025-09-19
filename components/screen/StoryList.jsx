@@ -1,12 +1,14 @@
 "use client";
 import { useRef, useState } from "react";
 import StoryItem from "../ui/StoryItem";
+import StoryModal from "../ui/StoryModal";
 
-const StoryList = () => {
+const StoryList = ({ fallback }) => {
   const scrollRef = useRef(null);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
+  const [selectedStory, setSelectedStory] = useState(null);
 
   const handleMouseDown = (e) => {
     setIsDown(true);
@@ -25,15 +27,6 @@ const StoryList = () => {
     scrollRef.current.scrollLeft = scrollLeft - walk;
   };
 
-  const list = [
-    { name: "سالنامه اروپایی", avatar: "/note1.png", isLive: true },
-    { name: "سالنامه رقعی", avatar: "/note5.jpeg" },
-    { name: "سالنامه پالتویی", avatar: "/note3.png" },
-    { name: "سالنامه چرم", avatar: "/note7.png" },
-    { name: "سالنامه وزیری", avatar: "/15.png" },
-    { name: "دیوان حافظ", avatar: "/note4.png" },
-  ];
-
   return (
     <section className="w-full">
       <div
@@ -51,15 +44,22 @@ const StoryList = () => {
           px-4 py-6 max-md:py-0
         "
       >
-        {list.map((item, i) => (
+        {fallback.result.products.map((item, i) => (
           <div
             key={i}
-            className="shrink-0 m-auto w-28 max-md:w-20 hide-scrollbar" // عرض ثابت آیتم‌ها
+            className="shrink-0 m-auto w-28 max-md:w-20 hide-scrollbar"
           >
-            <StoryItem {...item} />
+            <StoryItem {...item} onClick={() => setSelectedStory(item)} />
           </div>
         ))}
       </div>
+
+      <StoryModal
+        isOpen={!!selectedStory}
+        onClose={() => setSelectedStory(null)}
+        stories={fallback.result.products}
+        startIndex={fallback.result.products.findIndex((s) => s === selectedStory)}
+      />
     </section>
   );
 };

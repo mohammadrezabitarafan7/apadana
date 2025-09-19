@@ -63,16 +63,15 @@ export default async function Page() {
   };
 
   return (
-    <>
+    <div className="max-md:pt-20 container m-auto">
       <Products products={products} />
 
-      {/* Structured Data خارج از main */}
       {products.length > 0 && (
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       )}
-    </>
+    </div>
   );
 }

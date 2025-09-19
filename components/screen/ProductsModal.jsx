@@ -19,7 +19,7 @@ export default function ProductsModal({ products }) {
             height={120}
             src={item?.photo || "/logo1.png"}
             alt={item?.title}
-            className="w-full h-48 object-cover rounded mb-2"
+            className="w-full h-full object-cover rounded mb-2"
             onClick={() => setSelectedImage(item?.photo)}
           />
           <h2 className="text-sm font-bold text-black">{item?.title}</h2>
@@ -48,7 +48,7 @@ export default function ProductsModal({ products }) {
               ×
             </button>
             <Image
-              src={selectedImage}
+              src={selectedImage || "/logo.png"}
               width={600}
               height={600}
               alt="Product"

@@ -12,9 +12,12 @@ export type MetaResult = {
 
 export async function getMeta(path: string): Promise<MetaResult | null> {
   try {
-    const res = await fetch(`https://ctrl.apadanacalendar.com/api/meta?path=/${path}`, {
-      cache: "no-store",
-    });
+    const res = await fetch(
+      `https://ctrl.apadanacalendar.com/api/meta?path=/${path}`,
+      {
+        cache: "force-cache",
+      }
+    );
 
     const data = await res.json();
 

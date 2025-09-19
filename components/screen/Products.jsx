@@ -8,7 +8,7 @@ export default function Products({ products }) {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-6">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6 py-6">
       {products.map((item) => (
         <div
           key={item.id}

@@ -41,13 +41,12 @@ const breakpoints = {
   480: { slidesPerView: 2, spaceBetween: 20 },
   720: { slidesPerView: 4, spaceBetween: 20 },
 };
-
 const AllProducts = ({ fallback }) => {
   const data = fallback?.result;
   const [selectedProduct, setSelectedProduct] = useState(null);
 
   return (
-    <div className="flex relative flex-col gap-5 py-20 max-md:px-5 w-full">
+    <div className="flex relative flex-col gap-5 py-20 max-md:px-5 w-full ">
       {/* Header */}
       <div className="flex flex-row items-center justify-between py-6 max-md:py-2">
         <span className="text-[#17182f] font-black text-lg  max-md:text-sm">
@@ -86,29 +85,32 @@ const AllProducts = ({ fallback }) => {
           pagination={{ clickable: true }}
           modules={[Pagination]}
         >
-          {data?.products?.slice(0, 20).map((i) => (
-            <SwiperSlide key={i.id}>
-              <div
-                onClick={() => setSelectedProduct(i)}
-                className="bg-[#f6f6f6] rounded-[10px] p-5 flex flex-col gap-3 cursor-pointer"
-              >
-                <div className="bg-white p-3 rounded-[15px] h-[230px] flex justify-center max-md:h-[150px] overflow-hidden">
-                  <Image
-                    width={250}
-                    height={250}
-                    alt={i?.title || "apadana"}
-                    src={i?.photo}
-                    quality={100}
-                    className="m-auto w-full h-full object-contain"
-                  />
+          {data?.products
+            ?.filter((i) => [7, 8, 9, 10].includes(i.category_id))
+            .slice(0, 30)
+            .map((i) => (
+              <SwiperSlide key={i.id}>
+                <div
+                  onClick={() => setSelectedProduct(i)}
+                  className="bg-[#f6f6f6] rounded-[10px] p-5 flex flex-col gap-3 cursor-pointer"
+                >
+                  <div className="bg-white p-3 rounded-[15px] h-[230px] flex justify-center max-md:h-[150px] overflow-hidden">
+                    <Image
+                      width={250}
+                      height={250}
+                      alt={i?.title || "apadana"}
+                      src={i?.photo}
+                      quality={100}
+                      className="m-auto w-full h-full object-contain"
+                    />
+                  </div>
+                  <hr className="text-gray-400" />
+                  <span className="font-irans text-[13px] font-semibold text-black text-center leading-relaxed max-md:text-sm truncate">
+                    {i.title}
+                  </span>
                 </div>
-                <hr className="text-gray-400" />
-                <span className="font-irans text-[13px] font-semibold text-black text-center leading-relaxed max-md:text-sm truncate">
-                  {i.title}
-                </span>
-              </div>
-            </SwiperSlide>
-          ))}
+              </SwiperSlide>
+            ))}
         </StyledSwiper>
       </div>
 
@@ -130,7 +132,7 @@ const AllProducts = ({ fallback }) => {
             </button>
             <Image
               src={selectedProduct.photo}
-              alt={selectedProduct.title || ""}
+              alt={selectedProduct.title || "apadana-calender"}
               width={800}
               height={800}
               quality={100}

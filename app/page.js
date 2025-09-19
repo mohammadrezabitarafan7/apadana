@@ -40,17 +40,20 @@ export default async function Home() {
   let categories = [];
   let blogs = [];
   let products = [];
+  let stories = [];
 
   try {
     const [resCategories, resBlogs, resProducts] = await Promise.all([
       api.get("/categories").catch(() => ({ data: [] })),
       api.get("/articles").catch(() => ({ data: [] })),
       api.get("/products/all").catch(() => ({ data: [] })),
+      api.get("/products/home").catch(() => ({ data: [] })),
     ]);
 
     categories = resCategories.data ?? [];
     blogs = resBlogs.data ?? [];
     products = resProducts.data ?? [];
+    stories = resProducts.data ?? [];
   } catch (err) {
     // console.error("Error fetching data:", err.message);
   }
@@ -59,7 +62,7 @@ export default async function Home() {
     
     <main className="flex flex-col gap-[32px] m-auto container items-center max-md:px-0">
       <MySwiper />
-      <StoryList />
+      <StoryList fallback={stories} />
       <Category fallback={categories} />
       <AllProducts fallback={products} />
       <Banner />

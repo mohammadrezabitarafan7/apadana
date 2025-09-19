@@ -70,12 +70,12 @@ export default function MySwiper() {
     );
 
   return (
-    <div className="w-full max-md:pt-28">
+    <div className="w-full max-md:pt-28 px-1">
       <StyledSwiper
         loop={true}
         centeredSlides={true}
         breakpoints={{
-          320: { slidesPerView: 1.2, spaceBetween: 16 },
+          320: { slidesPerView: 1, spaceBetween: 16 },
           480: { slidesPerView: 2, spaceBetween: 20 },
           720: { slidesPerView: 3, spaceBetween: 24 },
           1024: { slidesPerView: 1, spaceBetween: 10 },
@@ -85,12 +85,12 @@ export default function MySwiper() {
       >
         {sliders?.result?.map((item) => (
           <SwiperSlide key={item.id}>
-            <div className="relative h-[400px] rounded-xl overflow-hidden shadow-lg cursor-pointer group">
+            <div className="relative h-[400px] max-md:h-[160px] rounded-xl overflow-hidden shadow-lg cursor-pointer group">
               <Image
                 src={item?.photo || "/note1.png"} 
                 alt={item.title || "بدون عنوان"} 
                 fill
-                className="object-cover transition-transform duration-500"
+                className="object-fill transition-transform duration-500"
                 sizes="(max-width: 400px) 100vw, 55vw"
                 quality={100}
                 priority={false} 
