@@ -1,3 +1,4 @@
+'use cleint'
 import Image from "next/image";
 import Link from "next/link";
 
@@ -29,17 +30,20 @@ const CardContacts = () => {
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-md:py-12 max-md:px-4">
       {items.map((i, index) => (
-        <Link target="blank" href={i?.href}
+        <Link
+          target="blank"
+          href={i?.href}
           key={index}
           className="flex flex-col items-center justify-center gap-3 p-6 bg-white rounded-2xl shadow hover:shadow-lg transition"
         >
           <div
             className="w-12 h-12 flex items-center justify-center"
-            aria-label={i.aria}
+            aria-label={i?.aria}
           >
             <Image
-              src={i.icon}
-              alt={i.aria}
+              priority
+              src={i?.icon}
+              alt={i?.aria}
               width={48}
               height={48}
               className="object-contain"
