@@ -68,7 +68,7 @@ const AllProducts = ({ fallback }) => {
         />
         <div className="flex gap-2 items-center border border-gray-600 rounded-md p-2 max-md:p-1 cursor-pointer">
           <Link
-            href="/all-products"
+            href="/yearbook"
             className="text-[#17182f] text-sm max-md:text-xs"
           >
             مشاهده همه

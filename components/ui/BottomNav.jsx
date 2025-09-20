@@ -12,7 +12,7 @@ const BottomNav1 = () => {
     { title: "محصولات", href: "/yearbook", icon: <AddIcon /> },
     {
       title: "ارتباط با ما",
-      href: "/https://wa.me/09123224288",
+      href: "https://wa.me/09123224288",
       icon: <WhatsAppIcon size={24} />,
     },
     { title: "درباره ما", href: "/contact-us", icon: <MoreIcon /> },
