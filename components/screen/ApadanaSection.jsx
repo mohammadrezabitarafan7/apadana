@@ -82,7 +82,7 @@ const ApadanaSection = () => {
 
           <div className="flex flex-row gap-4 mt-4">
             <Link
-              href="/catalogs/apadana_catalog.pdf"
+              href="/yearbook"
               target="_blank"
               className="px-4 py-2 text-sm text-[#4C4C4C] border border-[#4c4c4c] rounded-xl hover:bg"
             >
@@ -91,7 +91,7 @@ const ApadanaSection = () => {
           </div>
 
           <Link
-            href="/all-products"
+            href="/yearbook"
             className="mt-3 text-[#17182f] hover:underline"
           >
             مشاهده محصولات سالنامه آپادانا
