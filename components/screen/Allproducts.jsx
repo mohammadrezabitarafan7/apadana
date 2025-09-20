@@ -87,7 +87,7 @@ const AllProducts = ({ fallback }) => {
         >
           {data?.products
             ?.filter((i) => [7, 8, 9, 10].includes(i.category_id))
-            .slice(0, 30)
+            .slice(0, 10)
             .map((i) => (
               <SwiperSlide key={i.id}>
                 <div

@@ -9,7 +9,7 @@ import AddIcon from "../svg/AddIcon";
 const BottomNav1 = () => {
   const items = [
     { title: "خانه", href: "/", icon: <HomeIcon /> },
-    { title: "محصولات", href: "/all-products", icon: <AddIcon /> },
+    { title: "محصولات", href: "/yearbook", icon: <AddIcon /> },
     {
       title: "ارتباط با ما",
       href: "/https://wa.me/09123224288",

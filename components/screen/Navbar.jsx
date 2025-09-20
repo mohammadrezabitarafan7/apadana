@@ -4,11 +4,11 @@ import Link from "next/link";
 const Navbar = () => {
   const menu = [
     { title: "خانه", href: "/" },
-    { title: "محصولات", href: "/all-products" },
+    { title: "محصولات", href: "/yearbook" },
     { title: "تقویم رومیزی", href: "/calendar" },
     { title: "دفاتر تحصیلی", href: "/note-book" },
-    { title: "سالنامه رقعی", href: "/سالنامه%20رقعی" },
-    { title: "سالنامه اروپایی", href: "/سالنامه%20اروپایی" },
+    { title: "سالنامه رقعی", href: "/yearbook-raqee" },
+    { title: "سالنامه اروپایی", href: "/yearbook-european" },
     { title: "مقالات", href: "/blog" },
     { title: "ارتباط با ما", href: "/contact-us" },
   ];

@@ -37,6 +37,16 @@
 .hide-scrollbar::-webkit-scrollbar {
   display: none;  
 }
+  .articletext h1,
+.articletext h2,
+.articletext h3 {
+  font-size: 23px;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight:bold;
+}
+
 
 
 body {

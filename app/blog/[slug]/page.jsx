@@ -13,7 +13,7 @@ export async function generateMetadata({ params }) {
     return {
       title: "مقالات",
       description: "لیست مقالات سالنامه آپادانا",
-      robots: { index: false, follow: true }
+      robots: { index: false, follow: true },
     };
   }
 
@@ -43,15 +43,15 @@ export default async function BlogPage({ params }) {
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": blog.title,
-    "image": blog.photo ? [blog.photo] : [],
-    "author": { "@type": "Person", "name": blog.author || "سالنامه آپادانا" },
-    "datePublished": blog.published_at,
-    "dateModified": blog.updated_at || blog.published_at,
-    "mainEntityOfPage": {
+    headline: blog.title,
+    image: blog.photo ? [blog.photo] : [],
+    author: { "@type": "Person", name: blog.author || "سالنامه آپادانا" },
+    datePublished: blog.published_at,
+    dateModified: blog.updated_at || blog.published_at,
+    mainEntityOfPage: {
       "@type": "WebPage",
-      "@id": `https://ctrl.apadanacalendar.com/blog/${slug}`
-    }
+      "@id": `https://ctrl.apadanacalendar.com/blog/${slug}`,
+    },
   };
 
   return (
@@ -72,7 +72,13 @@ export default async function BlogPage({ params }) {
         <time className="text-sm text-gray-500">{blog.jalaliDate}</time>
       </header>
 
-      <div className="text-black" dangerouslySetInnerHTML={{ __html: blog.text || '' }} />
+      <div
+        className="text-black leading-relaxed
+             [&_h1]:text-[22px] [&_h1]:font-bold [&_h1]:mt-6 [&_h1]:mb-4
+             [&_h2]:text-[23px] [&_h2]:font-bold [&_h2]:mt-6 [&_h2]:mb-4
+             [&_h3]:text-[23px] [&_h3]:font-bold [&_h3]:mt-6 [&_h3]:mb-4"
+        dangerouslySetInnerHTML={{ __html: blog.text || "" }}
+      />
 
       <script
         type="application/ld+json"
