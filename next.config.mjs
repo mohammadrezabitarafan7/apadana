@@ -28,9 +28,19 @@ const nextConfig = {
         permanent: true, // 301
       },
       {
-        source: '/component/:path*',
-        destination: '/',
+        source: "/component/:path*",
+        destination: "/",
         permanent: true, // 301
+      },
+      {
+        source: "/images/:path*",
+        destination: "https://media.apadanacalendar.com/images/:path*",
+        permanent: true,
+      },
+      {
+        source: "/templates/:path*",
+        destination: "https://media.apadanacalendar.com/templates/:path*",
+        permanent: true,
       },
     ];
   },
