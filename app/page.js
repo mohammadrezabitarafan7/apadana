@@ -43,7 +43,7 @@ export default async function Home() {
   let stories = [];
 
   try {
-    const [resCategories, resBlogs, resProducts] = await Promise.all([
+    const [resCategories, resBlogs, resProducts,resStory] = await Promise.all([
       api.get("/categories").catch(() => ({ data: [] })),
       api.get("/articles").catch(() => ({ data: [] })),
       api.get("/products/all").catch(() => ({ data: [] })),
@@ -53,7 +53,7 @@ export default async function Home() {
     categories = resCategories.data ?? [];
     blogs = resBlogs.data ?? [];
     products = resProducts.data ?? [];
-    stories = resProducts.data ?? [];
+    stories = resStory.data ?? [];
   } catch (err) {
     // console.error("Error fetching data:", err.message);
   }
