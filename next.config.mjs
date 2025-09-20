@@ -5,25 +5,30 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "**",
-        port: "",
         pathname: "/**",
       },
       {
         protocol: "http",
         hostname: "**",
-        port: "",
         pathname: "/**",
       },
     ],
   },
-  //   async rewrites() {
-  //     return [
-  //       {
-  //         source: "/api/:path*", // آدرس روی کلاینت
-  //         destination: "https://app.irb2b.com/:path*", // آدرس سرور اصلی
-  //       },
-  //     ];
-  //   },
+
+  async redirects() {
+    return [
+      {
+        source: "/appreciation",
+        destination: "/yearbook",
+        permanent: true, // 301
+      },
+      {
+        source: "/price-list",
+        destination: "/",
+        permanent: true, // 301
+      },
+    ];
+  },
 };
 
 export default nextConfig;
