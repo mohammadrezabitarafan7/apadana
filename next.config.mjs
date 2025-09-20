@@ -27,6 +27,11 @@ const nextConfig = {
         destination: "/",
         permanent: true, // 301
       },
+      {
+        source: '/component/:path*',
+        destination: '/',
+        permanent: true, // 301
+      },
     ];
   },
 };
